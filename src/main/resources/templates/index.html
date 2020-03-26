@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+	<title>Bookstore</title>
+	
+</head>
+<body>
+	<h1 th:inline="text">Welcome to the bookstore, [[${#httpServletRequest.remoteUser}]]!</h1>
+	<button class="btn btn-info" onclick="location.href='/booklist'" type="button">
+	CLICK TO ENTER
+	</button>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+	<title>Bookstore</title>
+</head>
+<body>
+	<h1 style="float:left">Categories</h1>
+	<h5 style="float:right" th:inline="text">
+	Logged in: [[${#httpServletRequest.remoteUser}]]
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign out"/>
+	</form>
+	</h5>	
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Books</th>
+			<th></th>
+			<th></th>
+		</tr>		
+		<tr th:each = "cat: ${all_categories}">
+			<td th:text = "${cat.name}" />
+			<td th:text = "${#lists.size(cat.books)}" />	
+			<td><a class="btn btn-primary" th:href = "@{/edit_category/{id} (id=${cat.id})}">EDIT</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href = "@{/delete_category/{id} (id=${cat.id})}">DELETE CATEGORY AND ALL BOOKS IN IT</a></td>					
+		</tr>
+	</table> 	
+	<br>
+	<button class="btn btn-success" onclick="location.href='/add_category'" type="button">
+	Add a category
+	</button>
+	<br><br>
+	<button class="btn btn-info" onclick="location.href='/booklist'" type="button">
+	List books
+	</button>
+
+</body>
+</html>
