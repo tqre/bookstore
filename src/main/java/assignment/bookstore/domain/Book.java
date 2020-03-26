@@ -56,7 +56,11 @@ public class Book {
 	public Category getCategory() {
 		return category;
 	}
-
+	
+	public String getCategoryName() {
+		return this.category.getName();
+	}
+	
 	public void setCategory(Category category) {
 		this.category = category;
 	}

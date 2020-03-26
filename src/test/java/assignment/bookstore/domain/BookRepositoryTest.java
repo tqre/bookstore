@@ -17,6 +17,9 @@ public class BookRepositoryTest {
 	@Autowired
 	private BookRepository repo;
 	
+	//@Autowired
+	private CategoryRepository crepo;
+	
 	@Test
 	public void createBookTest() {
 		Book book = repo.save(new Book());
