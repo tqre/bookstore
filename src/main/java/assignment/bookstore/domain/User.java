@@ -23,8 +23,9 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private String role;
 	
-	public User() {}
-
+	public User() {
+	}
+		
 	public User(String username, String passwordHash, String role) {
 		this.username = username;
 		this.passwordHash = passwordHash;
