@@ -16,8 +16,20 @@ public class CategoryRepositoryTest {
 	private CategoryRepository repo;
 	
 	@Test
-	public void createCategory() {
+	public void createCategoryTest() {
 		Category cat = repo.save(new Category());
 		assertThat(cat.getId()).isNotNull();
+	}
+	
+	@Test
+	public void deleteCategoryTest() {
+		Category cat = repo.save(new Category());
+		repo.deleteById(cat.getId());
+		assertThat(cat.equals(null));
+	}
+
+	@Test
+	public void findCategoryByName() {
+		
 	}
 }
