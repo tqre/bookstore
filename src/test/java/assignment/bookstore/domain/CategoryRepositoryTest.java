@@ -17,8 +17,7 @@ public class CategoryRepositoryTest {
 	
 	@Test
 	public void createCategory() {
-		Category cat = new Category();
-		repo.save(cat);
+		Category cat = repo.save(new Category());
 		assertThat(cat.getId()).isNotNull();
 	}
 }

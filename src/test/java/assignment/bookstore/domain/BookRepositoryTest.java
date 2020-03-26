@@ -2,6 +2,8 @@ package assignment.bookstore.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,12 @@ public class BookRepositoryTest {
 		Book book = repo.save(new Book());
 		repo.deleteById(book.getId());
 		assertThat(book.equals(null));
+	}
+
+	@Test
+	public void findBookByTitleTest() {
+		repo.save(new Book("Title","Auth","isbn",10,null));
+		List<Book> booklist = repo.findByTitle("Title");
+		assertThat(booklist.get(0).getTitle().equals("Title"));
 	}
 }
