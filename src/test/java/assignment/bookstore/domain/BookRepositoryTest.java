@@ -16,9 +16,15 @@ public class BookRepositoryTest {
 	private BookRepository repo;
 	
 	@Test
-	public void createBook() {
-		Book book = new Book();
-		repo.save(book);
+	public void createBookTest() {
+		Book book = repo.save(new Book());
 		assertThat(book.getId()).isNotNull();
+	}
+	
+	@Test
+	public void deleteBookTest() {
+		Book book = repo.save(new Book());
+		repo.deleteById(book.getId());
+		assertThat(book.equals(null));
 	}
 }
