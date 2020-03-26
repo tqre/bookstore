@@ -17,9 +17,15 @@ public class UserRepositoryTest {
 	
 	@Test
 	public void createUser() {
-		User user = new User("testuser", "pwdHash", "ROLE");
-		repo.save(user);
+		User user = repo.save(new User("testuser", "pwdHash", "ROLE"));
 		assertThat(user.getId()).isNotNull();
+	}
+	
+	@Test
+	public void deleteUser() {
+		User user = repo.save(new User("testuser", "pwdHash", "ROLE"));
+		repo.deleteById(user.getId());
+		assertThat(user.equals(null));
 	}
 	
 }
