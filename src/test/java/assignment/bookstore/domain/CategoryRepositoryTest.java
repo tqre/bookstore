@@ -35,7 +35,7 @@ public class CategoryRepositoryTest {
 
 	@Test
 	public void findCategoryByName() {
-		Category cat = repo.save(new Category("TestCat"));
+		repo.save(new Category("TestCat"));
 		List<Category> catlist = repo.findByName("TestCat");
 		assertThat(catlist.get(0).getName().equals("TestCat"));
 	}
