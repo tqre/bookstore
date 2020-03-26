@@ -16,16 +16,22 @@ public class UserRepositoryTest {
 	private UserRepository repo;
 	
 	@Test
-	public void createUser() {
+	public void createUserTest() {
 		User user = repo.save(new User("testuser", "pwdHash", "ROLE"));
 		assertThat(user.getId()).isNotNull();
 	}
 	
 	@Test
-	public void deleteUser() {
+	public void deleteUserTest() {
 		User user = repo.save(new User("testuser", "pwdHash", "ROLE"));
 		repo.deleteById(user.getId());
 		assertThat(user.equals(null));
 	}
 	
+	@Test
+	public void findByUsername() {
+		repo.save(new User("testuser", "pwdHash", "ROLE"));
+		User user = repo.findByUsername("testuser");
+		assertThat(user.getUsername().equals("testuser"));
+	}
 }
