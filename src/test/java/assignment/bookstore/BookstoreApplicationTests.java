@@ -36,6 +36,4 @@ class BookstoreApplicationTests {
 		assertThat(secController).isNotNull();
 		assertThat(udController).isNotNull();
 	}
-
-
 }
