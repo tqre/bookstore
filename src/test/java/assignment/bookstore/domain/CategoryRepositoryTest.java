@@ -1,5 +1,7 @@
 package assignment.bookstore.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,9 @@ public class CategoryRepositoryTest {
 	private CategoryRepository repo;
 	
 	@Test
-	void test() {
-		
+	public void createCategory() {
+		Category cat = new Category();
+		repo.save(cat);
+		assertThat(cat.getId()).isNotNull();
 	}
-
 }
